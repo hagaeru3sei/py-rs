@@ -30,6 +30,6 @@ RUN apt-get update && apt-get upgrade -y \
     python3-pip \
     python3-setuptools
 RUN python3 -m pip install -U --upgrade pip wheel six
-RUN python3 -m pip install -U numpy scipy pandas joblib scikit-learn tensorflow
+RUN python3 -m pip install -U numpy scipy pandas joblib grpcio scikit-learn tensorflow tensorflow-datasets tfds-nightly matplotlib
 
 CMD ["sleep", "3600"]

@@ -27,13 +27,14 @@ fn main() -> PyResult<()> {
     let py = gil.python();
     let path: &PyList = py.import("sys").unwrap().get("path").unwrap().try_into().unwrap();
     // Append venv dir
-    path.insert(0, "/Users/nmochizuki/work/local/repos/py-rs/venv39/lib/python3.9/site-packages").unwrap();
     let root_dir = env::current_dir()?;
     path.insert(0, format!("{}", root_dir.display())).unwrap();
     println!("{}", path);
+
     let hello = py.import("hello")?;
     let res: String = hello.call1("say", ())?.extract()?;
     println!("{}", res);
+
     //let _np = py.import("numpy")?;
     //println!("{}", _np);
 
@@ -50,6 +51,9 @@ except ImportError as e:
     let ret = locals.get_item("ret").unwrap();
     let b64: &PyBytes = ret.downcast().unwrap();
     assert_eq!(b64.as_bytes(), b"SGVsbG8gUnVzdCE=");
+
+    let hello = py.import("hello")?;
+    hello.call1("load", ())?;
 
     Ok(())
 }
