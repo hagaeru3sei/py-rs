@@ -1,4 +1,7 @@
 /target
 /venv*
+/.vscode/
 *.log
 *.pyc
+/train/data/*
+!/train/data/.gitkeep

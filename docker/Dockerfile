@@ -29,7 +29,7 @@ RUN apt-get update && apt-get upgrade -y \
     vim \
     python3-pip \
     python3-setuptools
-RUN python3 -m pip install --upgrade pip wheel six
-RUN python3 -m pip install numpy scipy pandas
+RUN python3 -m pip install -U --upgrade pip wheel six
+RUN python3 -m pip install -U numpy scipy pandas joblib scikit-learn tensorflow
 
 CMD ["sleep", "3600"]
